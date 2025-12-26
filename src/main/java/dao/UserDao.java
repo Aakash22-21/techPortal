@@ -66,4 +66,43 @@ public class UserDao {
 		return exists;
 	}
 
+	// Checking email and password for login purpose
+	public User getUserByEmailAndPassword(String email, String pass) {
+
+		User user = null;
+
+		try {
+			String query = "select * from user where email=? and pass=?";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setString(1, email);
+			ps.setString(2, pass);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				// fetching all the data from rs and set the data to object
+				// userid, fname, lname, email, role, pass, imagename, mobno
+				int uid = rs.getInt("userid");
+				String fname = rs.getString("fname");
+				String lname = rs.getString("lname");
+				String uemail = rs.getString("email");
+				String role = rs.getString("role");
+				String img = rs.getString("imagename");
+				String mob = rs.getString("mobno");
+
+				user = new User();
+				user.setUserId(uid);
+				user.setUserFname(fname);
+				user.setUserLname(lname);
+				user.setUserEmail(uemail);
+				user.setRole(role);
+				user.setUserImg(img);
+				user.setMobno(mob);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
+
+	}
+
 }

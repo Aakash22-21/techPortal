@@ -80,8 +80,14 @@ public class SignUpControllerServlet extends HttpServlet {
 			// checking img is saved or not in dir
 			if (imgSaved) {
 				boolean isSaved = udao.saveUser(u);
+				
+				if(isSaved) {
+					session.setAttribute("msg", "success");
+					resp.sendRedirect("signup.jsp");
+				}
 			} else {
-
+				session.setAttribute("msg", "fail");
+				resp.sendRedirect("signup.jsp");
 			}
 
 		} catch (Exception e) {
