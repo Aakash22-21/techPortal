@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+.mybg{
+	background-color: #911bcc;
+}
+.my-btn-border{
+	border-color: #26408B;
+	color: #26408B;
+	font-weight: bold;
+}
