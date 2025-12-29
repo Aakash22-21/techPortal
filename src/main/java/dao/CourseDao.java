@@ -2,6 +2,9 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Course;
 
@@ -14,6 +17,7 @@ public class CourseDao {
 		this.conn = conn;
 	}
 
+	// Creating Method to add Course
 	public boolean saveCourse(Course course) {
 
 		boolean f = false;
@@ -44,5 +48,43 @@ public class CourseDao {
 
 		return f;
 
+	}
+	
+	// To get all Courses
+	public List<Course> getAllCourse(){
+		
+		// Created Empty Collection to Store Course Objects
+		List<Course> coursesList = new ArrayList<Course>();
+		
+		try {
+			
+			String query="select  * from course";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				// Create Course obj
+				Course c = new Course();
+				c.setCourseId(rs.getInt("cid"));
+				c.setCourseDesc(rs.getString("cdescription"));
+				c.setCourseDuration(rs.getString("courseduration"));
+				c.setCourseFee(rs.getInt("coursefee"));
+				c.setCourseImg(rs.getString("courseimg"));
+				c.setCourseName(rs.getString("coursename"));
+				c.setPdfName(rs.getString("pdfname"));
+				c.setStatus(rs.getString("status"));
+				c.setUserId(rs.getInt("userid"));
+				
+				coursesList.add(c);
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return coursesList;
+		
+		
 	}
 }

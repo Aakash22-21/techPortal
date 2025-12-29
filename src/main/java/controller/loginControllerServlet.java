@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import model.User;
 
 @WebServlet("/login")
-public class loginControllerServlet extends HttpServlet{
+public class LoginControllerServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		

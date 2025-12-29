@@ -26,7 +26,7 @@
 			
 			<div class="card admincard mycard" >
 					<div class="card-body">
-						<a href="#" class="card-link text-light">View Course Info </a>
+						<a href="viewcourse.jsp" class="card-link text-light">View Course Info </a>
 					</div>
 				</div>
 			

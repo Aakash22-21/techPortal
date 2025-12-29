@@ -58,7 +58,7 @@ public class SignUpControllerServlet extends HttpServlet {
 			
 			// changing every profile name into unique by adding timestamp & random number
 			// Checking if pic name is not empty
-			if(picName != null && picName.isBlank()) {
+			if(picName != null && !picName.isBlank()) {
 				String fileExtensioon = picName.substring(picName.lastIndexOf("."));
 				picName = picName+UUID.randomUUID().toString()+"_"+System.currentTimeMillis()+fileExtensioon;
 			}
@@ -86,7 +86,7 @@ public class SignUpControllerServlet extends HttpServlet {
 					resp.sendRedirect("signup.jsp");
 				}
 			} else {
-				session.setAttribute("msg", "fail");
+				session.setAttribute("failmsg", "fail");
 				resp.sendRedirect("signup.jsp");
 			}
 

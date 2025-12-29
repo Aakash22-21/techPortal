@@ -64,16 +64,22 @@
 
 				<!--	Success or Fail message-->
 				<c:if test="${not empty sessionScope.msg}">
-					<c:if test="${sessionScope.msg=='success'}">
-						<div class="alert alert-success" role="alert">Successfully
-							Signup!</div>
-					</c:if>
-					<c:if test="${sessionScope.msg=='fail'}">
-						<div class="alert alert-danger" role="alert">Something went
-							Wrong!</div>
-					</c:if>
+
+					<div class="alert alert-success" role="alert">Successfully
+						Signup!</div>
 					<c:remove var="msg" scope="session" />
 				</c:if>
+				<c:if test="${sessionScope.failmsg}">
+					<div class="alert alert-danger" role="alert">Something went
+						Wrong!</div>
+					<c:remove var="failmsg" scope="session" />
+				</c:if>
+
+
+
+
+
+
 
 			</div>
 		</div>
