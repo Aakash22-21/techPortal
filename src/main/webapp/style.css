@@ -8,3 +8,13 @@
 	color: #26408B;
 	font-weight: bold;
 }
+.admincard{
+	background-color: #26408B;
+	color: white;
+	
+}
+.mycard{
+	margin-top: 50px;
+	border:10px soild grey;
+	padding: 15px;
+}
