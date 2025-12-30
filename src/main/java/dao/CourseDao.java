@@ -49,20 +49,20 @@ public class CourseDao {
 		return f;
 
 	}
-	
+
 	// To get all Courses
-	public List<Course> getAllCourse(){
-		
+	public List<Course> getAllCourse() {
+
 		// Created Empty Collection to Store Course Objects
 		List<Course> coursesList = new ArrayList<Course>();
-		
+
 		try {
-			
-			String query="select  * from course";
+
+			String query = "select  * from course";
 			PreparedStatement ps = conn.prepareStatement(query);
 			ResultSet rs = ps.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				// Create Course obj
 				Course c = new Course();
 				c.setCourseId(rs.getInt("cid"));
@@ -74,17 +74,98 @@ public class CourseDao {
 				c.setPdfName(rs.getString("pdfname"));
 				c.setStatus(rs.getString("status"));
 				c.setUserId(rs.getInt("userid"));
-				
+
 				coursesList.add(c);
-				
+
 			}
-			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return coursesList;
+
+	}
+
+	// get Course by id from Db
+	public Course getCourseById(int courseId) {
+		Course course = null;
+		try {
+			String query = "select * from course where cid=?";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setInt(1, courseId);
+
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				course = new Course();
+				course.setCourseId(rs.getInt("cid"));
+				course.setCourseName(rs.getString("coursename"));
+				course.setCourseDuration(rs.getString("courseduration"));
+				course.setCourseDesc(rs.getString("cdescription"));
+				course.setCourseFee(rs.getInt("coursefee"));
+				course.setCourseImg(rs.getString("courseimg"));
+				course.setPdfName(rs.getString("pdfname"));
+				course.setStatus(rs.getString("status"));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return course;
+	}
+
+	// Creating Method for update Course.
+	public boolean updateCourse(Course course) {
+		boolean updated = false;
+
+		try {
+			// cid, coursename, courseduration, coursefee, status, cdescription, courseimg,
+			// pdfname, userid
+
+			String query = "update course set coursename=?, courseduration=?, coursefee=?, status=?, cdescription=?, courseimg=?, pdfname=? where cid=?";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setString(1, course.getCourseName());
+			ps.setString(2, course.getCourseDuration());
+			ps.setInt(3, course.getCourseFee());
+			ps.setString(4, course.getStatus());
+			ps.setString(5, course.getCourseDesc());
+			ps.setString(6, course.getCourseImg());
+			ps.setString(7, course.getPdfName());
+			ps.setInt(8, course.getCourseId());
+
+			int i = ps.executeUpdate();
+
+			if (i > 0) {
+				updated = true;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return updated;
+
+	}
+
+	// Creating Method to Delete Course
+	public boolean deleteCourseById(int id) {
+		boolean isDeleted = false;
+
+		try {
+
+			String query = "delete from course where cid=?";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setInt(1, id);
+			int i = ps.executeUpdate();
+			if (i == 1) {
+				isDeleted = true;
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return coursesList;
-		
-		
+		return isDeleted;
 	}
+
 }
