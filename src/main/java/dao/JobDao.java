@@ -196,5 +196,6 @@ public class JobDao {
 		return alreadyApplied;
 
 	}
+	
 
 }

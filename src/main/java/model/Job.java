@@ -11,6 +11,15 @@ public class Job {
 	private String pDate;
 	private String jobDesc;
 	
+	// to Store JobAplicants Count
+	private int totalJobApplicants;
+	
+	public int getTotalJobApplicants() {
+		return totalJobApplicants;
+	}
+	public void setTotalJobApplicants(int totalJobApplicants) {
+		this.totalJobApplicants = totalJobApplicants;
+	}
 	public String getJobDesc() {
 		return jobDesc;
 	}

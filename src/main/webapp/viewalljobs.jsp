@@ -24,7 +24,7 @@
 		<div class="alert alert-success" role="alert">${sessionScope.msg}</div>
 		<c:remove var="msg" scope="session" />
 	</c:if>
-	
+
 	<c:if test="${not empty sessionScope.warnmsg}">
 		<div class="alert alert-warning" role="alert">${sessionScope.warnmsg}</div>
 		<c:remove var="warnmsg" scope="session" />
@@ -71,10 +71,20 @@
 							Posted on:-
 							<%=j.getpDate()%></p>
 
-						<a href="appplyjob?jid=<%=j.getJobid()%>" class="btn btn-primary">Apply</a>
-						<a href="" class="btn btn-success">Read More...</a> <a
-							href="editjob.jsp?jid=<%=j.getJobid()%>" class="btn btn-warning">Edit</a>
-						<a href="deletejob?jid=<%=j.getJobid()%>" class="btn btn-danger">Delete</a>
+						<c:if test="${sessionScope.userobj.role=='normal' }">
+
+							<a href="appplyjob?jid=<%=j.getJobid()%>" class="btn btn-primary">Apply</a>
+							<a href="" class="btn btn-success">Read More...</a>
+
+						</c:if>
+
+						<c:if test="${sessionScope.userobj.role=='admin' }">
+
+							<a href="editjob.jsp?jid=<%=j.getJobid()%>"
+								class="btn btn-warning">Edit</a>
+							<a href="deletejob?jid=<%=j.getJobid()%>" class="btn btn-danger">Delete</a>
+
+						</c:if>
 					</div>
 				</div>
 

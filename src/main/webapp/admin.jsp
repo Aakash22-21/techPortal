@@ -49,6 +49,17 @@
 				</div>
 			
 			</div>
+			
+				<div class="col-md-3">
+			
+			<div class="card admincard mycard" >
+					<div class="card-body">
+						<a href="jobapplicants.jsp" class="card-link text-light">View Job Application </a>
+					</div>
+				</div>
+			
+			</div>
+			
 		</div>
 	</div>
 
