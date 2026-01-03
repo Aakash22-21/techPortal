@@ -35,7 +35,7 @@
 			
 			<div class="card admincard mycard" >
 					<div class="card-body">
-						<a href="#" class="card-link text-light">Post Jobs </a>
+						<a href="addjobs.jsp" class="card-link text-light">Post Jobs </a>
 					</div>
 				</div>
 			
@@ -44,7 +44,7 @@
 			
 			<div class="card admincard mycard" >
 					<div class="card-body">
-						<a href="#" class="card-link text-light">View Jobs </a>
+						<a href="viewalljobs.jsp" class="card-link text-light">View Jobs </a>
 					</div>
 				</div>
 			

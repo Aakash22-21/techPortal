@@ -164,8 +164,209 @@ public class CourseDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return isDeleted;
 	}
 
+	// Get Latest 6 Courses
+	public List<Course> getLatestCourses() {
+
+		// Created Empty Arraylist to Store Course Obj from Db
+		List<Course> latestCourses = new ArrayList<Course>();
+
+		try {
+
+			String query = "select cid, coursename, coursefee, status, cdescription, courseimg from course order by cid desc limit 6";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Course course = new Course();
+				course.setCourseId(rs.getInt("cid"));
+				course.setCourseName(rs.getString("coursename"));
+				course.setCourseDesc(rs.getString("cdescription"));
+				course.setCourseFee(rs.getInt("coursefee"));
+				course.setCourseImg(rs.getString("courseimg"));
+				course.setStatus(rs.getString("status"));
+
+				latestCourses.add(course);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return latestCourses;
+	}
+
+	// Creating method to show all Courses
+	public List<Course> getAllCourses() {
+
+		// Created Empty Arraylist to Store Course Obj from Db
+		List<Course> latestCourses = new ArrayList<Course>();
+
+		try {
+
+			String query = "select cid, coursename, coursefee, status, cdescription, courseimg from course order by cid desc";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Course course = new Course();
+				course.setCourseId(rs.getInt("cid"));
+				course.setCourseName(rs.getString("coursename"));
+				course.setCourseDesc(rs.getString("cdescription"));
+				course.setCourseFee(rs.getInt("coursefee"));
+				course.setCourseImg(rs.getString("courseimg"));
+				course.setStatus(rs.getString("status"));
+
+				latestCourses.add(course);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return latestCourses;
+	}
+
+	// Creating Method to get Pdf Name From Db
+	public String getCoursePdfName(int id) {
+
+		String pdfName = null;
+		try {
+
+			String query = "select pdfname from course where cid=?";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				pdfName = rs.getString("pdfname");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return pdfName;
+
+	}
+
+	// Creating Method to get Distinct Status From Db
+	public List<String> getDistinctStatus() {
+
+		List<String> statusList = new ArrayList<String>();
+
+		try {
+			String query = "select distinct status from course";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				statusList.add(rs.getString("status"));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return statusList;
+	}
+
+	// creating Method search by course name
+	public List<Course> getCourseByName(String cname) {
+		List<Course> courses = new ArrayList<Course>();
+
+		try {
+			String query = "select * from course where coursename like ?";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setString(1, "%" + cname + "%");
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Course course = new Course();
+				course.setCourseId(rs.getInt("cid"));
+				course.setCourseName(rs.getString("coursename"));
+				course.setCourseDesc(rs.getString("cdescription"));
+				course.setCourseFee(rs.getInt("coursefee"));
+				course.setCourseImg(rs.getString("courseimg"));
+				course.setStatus(rs.getString("status"));
+
+				courses.add(course);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return courses;
+
+	}
+
+	// creating Method search by status
+	public List<Course> getCourseByStatus(String status) {
+		List<Course> courses = new ArrayList<Course>();
+
+		try {
+			String query = "select * from course where status = ?";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setString(1, status);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Course course = new Course();
+				course.setCourseId(rs.getInt("cid"));
+				course.setCourseName(rs.getString("coursename"));
+				course.setCourseDesc(rs.getString("cdescription"));
+				course.setCourseFee(rs.getInt("coursefee"));
+				course.setCourseImg(rs.getString("courseimg"));
+				course.setStatus(rs.getString("status"));
+
+				courses.add(course);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return courses;
+	}
+
+	// creating Method search by fee
+	public List<Course> getCourseByFee(String order) {
+		List<Course> courses = new ArrayList<Course>();
+
+		// default Sorting Order
+		String sortOrder = "ASC";
+
+		if (order.equals("high-low")) {
+			sortOrder = "DESC";
+		}
+
+		try {
+			String query = "select * from course order by coursefee " + sortOrder;
+			PreparedStatement ps = conn.prepareStatement(query);
+
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Course course = new Course();
+				course.setCourseId(rs.getInt("cid"));
+				course.setCourseName(rs.getString("coursename"));
+				course.setCourseDesc(rs.getString("cdescription"));
+				course.setCourseFee(rs.getInt("coursefee"));
+				course.setCourseImg(rs.getString("courseimg"));
+				course.setStatus(rs.getString("status"));
+
+				courses.add(course);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return courses;
+
+	}
 }

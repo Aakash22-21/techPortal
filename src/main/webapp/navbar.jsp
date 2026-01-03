@@ -34,7 +34,14 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active"><a class="nav-link"
-					href="index.jsp">Home <span class="sr-only">(current)</span>
+					href="index.jsp">Home </a></li>
+				
+				<li class="nav-item active"><a class="nav-link"
+					href="viewcourses">View Courses <span class="sr-only">(current)</span>
+				</a></li>
+				
+					<li class="nav-item active"><a class="nav-link"
+					href="viewalljobs.jsp">Carrer<span class="sr-only">(current)</span>
 				</a></li>
 
 				<c:if test="${sessionScope.userobj.role=='admin' }">

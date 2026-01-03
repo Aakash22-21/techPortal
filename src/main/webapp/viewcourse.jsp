@@ -52,7 +52,7 @@
 							<td><a href="editcourse.jsp?cid=<%=c.getCourseId()%>"
 								class="btn btn-warning">Edit</a></td>
 							<td><a href="delete?cid=<%=c.getCourseId()%>" class="btn btn-danger">Delete</a></td>
-							<td><a href="" class="btn btn-success">Enrollment</a></td>
+							<td><a href="viewwnrollment?cid=<%=c.getCourseId()%>" class="btn btn-success">Enrollment</a></td>
 						</tr>
 
 						<%

@@ -9,6 +9,8 @@
 </head>
 <body>
 	<%@include file="navbar.jsp"%>
+
+
 	<div class="container">
 		<div class="row">
 			<div class="col-12 col-md-6 offset-md-3 my-2 border">
@@ -30,6 +32,10 @@
 					<button type="submit" class="btn btn-primary">login</button>
 				</form>
 				<!-- login Form Ends -->
+				<c:if test="${not empty sessionScope.msg}">
+					<div class="alert alert-success" role="alert">${sessionScope.msg}</div>
+					<c:remove var="msg" scope="session" />
+				</c:if>
 
 				<!-- Invalid login MS -->
 				<c:if test="${not empty sessionScope.msg}">
@@ -45,6 +51,8 @@
 
 			</div>
 		</div>
+
+
 	</div>
 
 </body>
