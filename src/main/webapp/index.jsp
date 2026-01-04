@@ -13,33 +13,36 @@
 </head>
 <body>
 	<%@include file="navbar.jsp"%>
-	<!-- Slider -->
-	<div id="carouselExampleControls" class="carousel slide"
-		data-ride="carousel">
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<img src="Slider_images/img1.jpg" class="d-block w-100" alt="img1">
-			</div>
-			<div class="carousel-item">
-				<img src="Slider_images/img2.jpg" class="d-block w-100" alt="img2">
-			</div>
-			<div class="carousel-item">
-				<img src="Slider_images/img3.jpg" class="d-block w-100" alt="img3">
-			</div>
-		</div>
-		<button class="carousel-control-prev" type="button"
-			data-target="#carouselExampleControls" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-				class="sr-only">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button"
-			data-target="#carouselExampleControls" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span> <span
-				class="sr-only">Next</span>
-		</button>
-	</div>
+	<section class="hero-job">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+
+                <h1 class="hero-title">
+                    Your Next Big Move <br>
+                    <span>Starts Here.</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    Learn skills, explore jobs, and grow your career with us.
+                </p>
+
+                <!-- Search Bar -->
+                <form action="indexpagesearch" method="get" class="hero-search mt-4">
+                    <input type="text" name="jobSearch" class="form-control"
+                           placeholder="Job title, keywords">
+                    <input type="text" name="courseSearch"  class="form-control"
+                           placeholder="Search Courses">
+                    <button class="btn btn-custom">Search</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+	
 	<!-- Main Body Started -->
-	<div class="conatiner">
+	<div class="container">
 
 		<div class="row">
 
@@ -50,17 +53,19 @@
 			for (Course c : list) {
 			%>
 
-			<div class="col-md-4 col-12">
-				<div class="card m-4" style="width: 18rem;">
-					<img src="course_img/<%=c.getCourseImg() %>" width="150px" height="200px"
-						class="card-img-top" alt="...">
+			<div class="col-md-4 col-12 container py-5">
+				<div class="card card-custom course-img-wrapper m-4 h-100">
+					<img src="course_img/<%=c.getCourseImg() %>" 
+     class="card-img-top img-fluid"
+     style="height:200px; object-fit:contain;">
+
 					<div class="card-body">
 						<h5 class="card-title"><%=c.getCourseName()%></h5>
 						<p class="card-text"><%=c.getCourseDesc()%></p>
-						<p class="card-text"><%=c.getCourseFee()%></p>
-						<p class="card-text"><%=c.getStatus()%></p>
+						<p class="card-text course-price"><%=c.getCourseFee()%></p>
+						<p class="card-text course-status"><%=c.getStatus()%></p>
 						
-						<a href="download?cid=<%=c.getCourseId() %>" class="btn btn-primary">Download Syllabus</a>
+						<a href="download?cid=<%=c.getCourseId() %>" class="btn btn-custom">Download Syllabus</a>
 					</div>
 				</div>
 			</div>
@@ -71,4 +76,13 @@
 		</div>
 	</div>
 </body>
+<script>
+document.querySelector('[name="jobSearch"]').addEventListener('input', function() {
+    document.querySelector('[name="courseSearch"]').disabled = this.value.length > 0;
+});
+document.querySelector('[name="courseSearch"]').addEventListener('input', function() {
+    document.querySelector('[name="jobSearch"]').disabled = this.value.length > 0;
+});
+</script>
+
 </html>

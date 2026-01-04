@@ -14,6 +14,18 @@
 <title>View Course</title>
 </head>
 <body>
+	<c:if
+		test="${not empty sessionScope.userobj.role and sessionScope.userobj.role != 'admin'}">
+
+		<c:redirect url="login.jsp"></c:redirect>
+
+	</c:if>
+
+	<c:if test="${empty sessionScope.userobj }">
+
+		<c:redirect url="login.jsp"></c:redirect>
+
+	</c:if>
 	<%@include file="navbar.jsp"%>
 
 	<div class="container-fluid ">
@@ -51,8 +63,10 @@
 							<td><%=c.getStatus()%></td>
 							<td><a href="editcourse.jsp?cid=<%=c.getCourseId()%>"
 								class="btn btn-warning">Edit</a></td>
-							<td><a href="delete?cid=<%=c.getCourseId()%>" class="btn btn-danger">Delete</a></td>
-							<td><a href="viewwnrollment?cid=<%=c.getCourseId()%>" class="btn btn-success">Enrollment</a></td>
+							<td><a href="delete?cid=<%=c.getCourseId()%>"
+								class="btn btn-danger">Delete</a></td>
+							<td><a href="viewwnrollment?cid=<%=c.getCourseId()%>"
+								class="btn btn-success">Enrollment</a></td>
 						</tr>
 
 						<%

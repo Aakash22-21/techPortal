@@ -8,58 +8,66 @@
 <title>Admin Panel</title>
 </head>
 <body>
+
+	<c:if
+		test="${not empty sessionScope.userobj.role and sessionScope.userobj.role != 'admin'}">
+
+		<c:redirect url="login.jsp"></c:redirect>
+
+	</c:if>
+
+	<c:if test="${empty sessionScope.userobj }">
+
+		<c:redirect url="login.jsp"></c:redirect>
+
+	</c:if>
+
 	<%@include file="navbar.jsp"%>
 
-	<div class="container-fluid">
+	<div class="container py-5">
+	 <h2 class="mb-4">Admin Dashboard</h2>
 		<div class="row">
-			
-			<div class="col-md-3">
 
-				<div class="card admincard mycard" >
-					<div class="card-body">
-						<a href="addcourse.jsp" class="card-link text-light">Add Course </a>
-					</div>
-				</div>
+			 <div class="col-md-3 col-sm-6">
+            <a href="addcourse.jsp" class="card-link">
+                <div class="card card-custom text-center p-4">
+                    <h5>Add Course</h5>
+                </div>
+            </a>
+        </div>
+        
+		  <div class="col-md-3 col-sm-6">
+            <a href="viewcourse.jsp" class="card-link">
+                <div class="card card-custom text-center p-4">
+                    <h5>View Course Info</h5>
+                </div>
+            </a>
+        </div>
+        
+		 <div class="col-md-3 col-sm-6">
+            <a href="addjobs.jsp" class="card-link">
+                <div class="card card-custom text-center p-4">
+                    <h5>Post Jobs</h5>
+                </div>
+            </a>
+        </div>
+        
+			 <div class="col-md-3 col-sm-6">
+            <a href="viewalljobs.jsp" class="card-link">
+                <div class="card card-custom text-center p-4">
+                    <h5>View Jobs</h5>
+                </div>
+            </a>
+        </div>
 
-			</div>
-			<div class="col-md-3">
-			
-			<div class="card admincard mycard" >
-					<div class="card-body">
-						<a href="viewcourse.jsp" class="card-link text-light">View Course Info </a>
-					</div>
-				</div>
-			
-			</div>
-			<div class="col-md-3">
-			
-			<div class="card admincard mycard" >
-					<div class="card-body">
-						<a href="addjobs.jsp" class="card-link text-light">Post Jobs </a>
-					</div>
-				</div>
-			
-			</div>
-			<div class="col-md-3">
-			
-			<div class="card admincard mycard" >
-					<div class="card-body">
-						<a href="viewalljobs.jsp" class="card-link text-light">View Jobs </a>
-					</div>
-				</div>
-			
-			</div>
-			
-				<div class="col-md-3">
-			
-			<div class="card admincard mycard" >
-					<div class="card-body">
-						<a href="jobapplicants.jsp" class="card-link text-light">View Job Application </a>
-					</div>
-				</div>
-			
-			</div>
-			
+			   <div class="col-md-3 col-sm-6">
+            <a href="jobapplicants.jsp" class="card-link">
+                <div class="card card-custom text-center p-4">
+                    <h5>Job Applications</h5>
+                </div>
+            </a>
+        </div>
+
 		</div>
 	</div>
 

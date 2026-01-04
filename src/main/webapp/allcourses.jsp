@@ -116,6 +116,7 @@
 					<h5 class="card-title"><%=c.getCourseName()%></h5>
 					<p class="card-text"><%=c.getCourseDesc()%></p>
 					<p class="card-text"><%=c.getCourseFee()%></p>
+					
 					<p class="card-text"><%=c.getStatus()%></p>
 
 					<a href="download?cid=<%=c.getCourseId()%>" class="btn btn-primary">Download

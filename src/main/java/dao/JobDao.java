@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.print.event.PrintJobAttributeListener;
+
 import model.Job;
 
 public class JobDao {
@@ -195,6 +197,32 @@ public class JobDao {
 		}
 		return alreadyApplied;
 
+	}
+	// Method to Search job by name
+	public List<Job> getJobByName(String jname){
+		List<Job> jobList = new ArrayList<Job>();
+		
+		try {
+			String query = "select * from job where title like ?";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setString(1, "%" + jname + "%");
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Job job = new Job();
+//				jobid, title, jobdesc, cat, status, location, postdate
+				job.setTitle(rs.getString("title"));
+				job.setJobDesc(rs.getString("jobdesc"));
+				job.setCategory(rs.getString("cat"));
+				job.setStatus(rs.getString("status"));
+				job.setLocation(rs.getString("location"));
+				job.setpDate(rs.getTimestamp("postdate")+ "");
+				
+				jobList.add(job);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return jobList;
 	}
 	
 

@@ -12,6 +12,18 @@
 <title>Enrollment List</title>
 </head>
 <body>
+	<c:if
+		test="${not empty sessionScope.userobj.role and sessionScope.userobj.role != 'admin'}">
+
+		<c:redirect url="login.jsp"></c:redirect>
+
+	</c:if>
+
+	<c:if test="${empty sessionScope.userobj }">
+
+		<c:redirect url="login.jsp"></c:redirect>
+
+	</c:if>
 	<%@include file="navbar.jsp"%>
 
 	<div class="container-fluid ">

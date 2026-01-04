@@ -22,9 +22,9 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-custom navbar-dark">
 		<a class="navbar-brand" href="index.jsp">Aakash_21</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
+		<button class="navbar-toggler " type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
 			aria-label="Toggle navigation">
@@ -81,12 +81,12 @@
 
 			<c:if test="${empty sessionScope.userobj}">
 				<a
-					class="nav-link btn btn-outline-*  my-btn-border my-2 my-sm-0 mr-2"
+					class="nav-link btn btn-primary-custom mr-2"
 					href="login.jsp"> <i class="fa-solid fa-right-to-bracket"></i>
 					Login
 				</a>
 
-				<a class="nav-link btn btn-outline-success my-2 my-sm-0"
+				<a class="nav-link btn btn-primary-custom "
 					href="signup.jsp"> <i class="fa-solid fa-user-plus"></i> Signup
 				</a>
 			</c:if>

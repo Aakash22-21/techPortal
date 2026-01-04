@@ -12,6 +12,21 @@
 <title>View Applicants Data</title>
 </head>
 <body>
+
+	<c:if
+		test="${not empty sessionScope.userobj.role and sessionScope.userobj.role != 'admin'}">
+
+		<c:redirect url="login.jsp"></c:redirect>
+
+	</c:if>
+
+	<c:if test="${empty sessionScope.userobj }">
+
+		<c:redirect url="login.jsp"></c:redirect>
+
+	</c:if>
+
+
 	<%@include file="navbar.jsp"%>
 
 	<div class="container-fluid ">
@@ -32,31 +47,27 @@
 					</thead>
 					<tbody>
 
-				<%
-				String jid = request.getParameter("jobid");
-				int jobId = Integer.parseInt(jid);
-				
-				JobApplyDao jad = new JobApplyDao(DbConnector.getDbConnection());
-			List<ApplicantsData> applicantList = jad.getApplicantsData(jobId);
-			int srno=1;
-			for(ApplicantsData ad:applicantList){
-				
-				
-				%>
+						<%
+						String jid = request.getParameter("jobid");
+						int jobId = Integer.parseInt(jid);
+
+						JobApplyDao jad = new JobApplyDao(DbConnector.getDbConnection());
+						List<ApplicantsData> applicantList = jad.getApplicantsData(jobId);
+						int srno = 1;
+						for (ApplicantsData ad : applicantList) {
+						%>
 
 						<tr>
 							<td><%=srno++%></td>
-							<td><%=ad.getFullName() %></td>
-							<td><%=ad.getEmail() %></td>
-							<td><%=ad.getMobNo() %></td>
-							<td><%=ad.getApplyDate() %></td>
+							<td><%=ad.getFullName()%></td>
+							<td><%=ad.getEmail()%></td>
+							<td><%=ad.getMobNo()%></td>
+							<td><%=ad.getApplyDate()%></td>
 						</tr>
 
-				<%
-			}
-				
-				
-				%>
+						<%
+						}
+						%>
 
 
 					</tbody>

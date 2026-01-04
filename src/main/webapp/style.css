@@ -1,6 +1,6 @@
 @charset "UTF-8";
-
-.mybg{
+/* My Css Code */
+/* .mybg{
 	background-color: #911bcc;
 }
 .my-btn-border{
@@ -17,4 +17,235 @@
 	margin-top: 50px;
 	border:10px soild grey;
 	padding: 15px;
+} */
+
+/* My Css Code */
+
+:root {
+    --primary-dark: #0D0221;
+    --secondary-dark: #0F084B;
+    --accent-blue: #26408B;
+    --white: #FFFFFF;
 }
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+}
+
+
+/* Body */
+body {
+    background-color: #f5f7fb;
+    color: var(--primary-dark);
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+.hero-job {
+    min-height: 420px;
+    background: linear-gradient(135deg, #0D0221, #26408B);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+/* Text */
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #ffffff;
+}
+
+.hero-title span {
+    color: #9fc5ff;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    margin-top: 15px;
+    color: #dcdcdc;
+}
+
+/* Search bar */
+.hero-search {
+    display: flex;
+    gap: 10px;
+    max-width: 700px;
+}
+
+.hero-search .form-control {
+    height: 50px;
+    border-radius: 8px;
+}
+
+.hero-search button {
+	background-color: #26408B;   /* accent blue */
+    color: #ffffff;
+    font-weight: 600;
+    height: 50px;
+    padding: 0 30px;
+    border-radius: 8px;
+}
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-search {
+        flex-direction: column;
+    }
+
+    .hero-search button {
+        width: 100%;
+    }
+}
+
+
+/* Navbar */
+.navbar-custom {
+    background-color: var(--primary-dark);
+}
+
+.navbar-custom .nav-link,
+.navbar-custom .navbar-brand {
+    color: var(--white) !important;
+}
+
+.navbar-custom .nav-link:hover {
+    color: var(--accent-blue) !important;
+}
+
+/* Buttons */
+.btn-primary-custom {
+    background-color: var(--accent-blue);
+    border: none;
+    color: var(--white);
+}
+
+.btn-custom {
+     border-radius: 8px;
+    padding: 8px 16px;
+    box-shadow: 0 4px 10px rgba(38,64,139,0.25);
+}
+
+.btn-custom:hover {
+    background-color: #0F084B;
+    color: #ffffff;
+}
+
+
+.btn-primary-custom:hover {
+     background-color: var(--accent-blue);
+     color: var(--white);
+     color: #ffffff;
+}
+
+/* Cards */
+.card-custom {
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 8px;
+}
+.row > div {
+    margin-bottom: 30px;
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+}
+.carousel-item img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+
+
+.course-img-wrapper {
+    background-color: #f1f3f8;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+.card-title {
+    font-weight: 600;
+    color: #0D0221;
+}
+
+.card-text {
+    font-size: 14px;
+    color: #555;
+}
+.course-price {
+    font-weight: 600;
+    color: #26408B;
+}
+
+.course-status {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.card-link .card {
+    cursor: pointer;
+}
+
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+}
+
+
+/* Headings */
+h1, h2, h3 {
+    color: var(--primary-dark);
+    font-weight: 600;
+}
+
+/* Form focus */
+.form-control:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 0.1rem rgba(38,64,139,.25);
+}
+
+/* Tables */
+.table thead {
+    background-color: var(--secondary-dark);
+    color: var(--white);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--primary-dark);
+    color: var(--white);
+}
+/* ===== Navbar Login & Signup FIX ===== */
+
+/* Login link */
+.navbar-custom .nav-link {
+    transition: color 0.3s ease;
+}
+
+.navbar-custom .nav-link:hover {
+    color: #9fc5ff !important;
+}
+
+/* Signup button */
+.navbar-custom .btn-custom {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #9fc5ff;
+    transition: all 0.3s ease;
+}
+
+.navbar-custom .btn-custom:hover {
+    background-color: #9fc5ff;
+    color: #0D0221;
+    border-color: #9fc5ff;
+}
+
+
